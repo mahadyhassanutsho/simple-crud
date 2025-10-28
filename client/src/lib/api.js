@@ -6,3 +6,6 @@ export const postUser = (user) =>
     },
     body: JSON.stringify(user),
   }).then((res) => res.json());
+
+export const getUsers = () =>
+  fetch("http://localhost:6996/users").then((res) => res.json());

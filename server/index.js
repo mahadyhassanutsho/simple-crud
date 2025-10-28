@@ -36,6 +36,12 @@ const run = async () => {
         .status(201)
         .json({ message: "user created successfully", user: insertedUser });
     });
+
+    app.get("/users", async (req, res) => {
+      const cursor = userCollection.find();
+      const users = await cursor.toArray();
+      res.json(users);
+    });
   } finally {
     // await client.close();
   }
