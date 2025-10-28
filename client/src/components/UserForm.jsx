@@ -35,7 +35,6 @@ const UserForm = ({ onAddUser }) => {
     }
 
     const newUser = {
-      id: `usr_${Math.random().toString(16).slice(2, 10)}`,
       username: form.username.trim(),
       email: form.email.trim(),
     };
