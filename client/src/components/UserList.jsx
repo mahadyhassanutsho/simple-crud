@@ -1,8 +1,4 @@
-import { use } from "react";
-
-const UserList = ({ usersPromise }) => {
-  const users = use(usersPromise);
-
+const UserList = ({ users }) => {
   return (
     <div className="max-w-3xl mx-auto mt-8 grid sm:grid-cols-2 gap-4">
       {users.map((user) => (

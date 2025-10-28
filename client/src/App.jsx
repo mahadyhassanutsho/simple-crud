@@ -1,4 +1,4 @@
-import { Suspense } from "react";
+import { useState, useEffect, Suspense } from "react";
 
 import { postUser, getUsers } from "./lib/api";
 
@@ -7,16 +7,29 @@ import UserList from "./components/UserList";
 import Loading from "./components/Loading";
 
 const App = () => {
-  const addUserHandler = (user) => {
-    console.log(user);
-    postUser(user).then(console.log);
+  const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  const loadUsers = async () => {
+    setLoading(true);
+    const data = await getUsers();
+    setUsers(data);
+    setLoading(false);
   };
+
+  const addUserHandler = async (user) => {
+    console.log(user);
+    await postUser(user);
+    await loadUsers();
+  };
+
+  useEffect(() => {
+    loadUsers();
+  }, []);
 
   return (
     <div className="w-full min-h-screen bg-gray-50 text-gray-800 flex flex-col items-center justify-center gap-8">
-      <Suspense fallback={<Loading />}>
-        <UserList usersPromise={getUsers()} />
-      </Suspense>
+      {loading ? <Loading /> : <UserList users={users} />}
 
       <UserForm onAddUser={addUserHandler} />
     </div>
