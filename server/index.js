@@ -1,7 +1,7 @@
 const dotenv = require("dotenv");
 const cors = require("cors");
 const express = require("express");
-const { MongoClient, ServerApiVersion } = require("mongodb");
+const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 
 dotenv.config();
 
@@ -41,6 +41,13 @@ const run = async () => {
       const cursor = userCollection.find();
       const users = await cursor.toArray();
       res.json(users);
+    });
+
+    app.delete("/users/:id", async (req, res) => {
+      const id = req.params.id;
+      const query = { _id: new ObjectId(id) };
+      const deletedUser = await userCollection.deleteOne(query);
+      res.json({ message: "user deleted successfully", user: deletedUser });
     });
   } finally {
     // await client.close();
