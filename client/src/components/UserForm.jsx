@@ -48,9 +48,9 @@ const UserForm = ({ onAddUser }) => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="max-w-md mx-auto p-6 bg-white rounded-md drop-shadow space-y-4"
+      className="w-full max-w-md mx-auto p-8 bg-white rounded-md drop-shadow space-y-6"
     >
-      <h2 className="text-2xl font-bold text-center">Add New User</h2>
+      <h2 className="text-2xl font-bold text-center pb-4">Add New User</h2>
 
       {/* Username Input */}
       <div>

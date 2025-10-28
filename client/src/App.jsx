@@ -1,11 +1,15 @@
+import { postUser } from "./lib/api";
 import UserForm from "./components/UserForm";
 
 const App = () => {
+  const addUserHandler = (user) => {
+    console.log(user);
+    postUser(user).then(console.log);
+  };
+
   return (
     <div className="w-full min-h-screen bg-gray-50 text-gray-800 flex flex-col items-center justify-center gap-8">
-      <h1 className="text-3xl font-bold">Welcome to Simple Crud!</h1>
-
-      <UserForm onAddUser={console.log} />
+      <UserForm onAddUser={addUserHandler} />
     </div>
   );
 };
