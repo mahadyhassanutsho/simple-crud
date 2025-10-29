@@ -7,6 +7,8 @@ import HomePage from "../pages/HomePage";
 import UserPage from "../pages/UserPage";
 import UsersPage from "../pages/UsersPage";
 import Loading from "../components/Loading";
+import UpdateUserPage from "../pages/UpdateUserPage";
+import DeleteUserPage from "../pages/DeleteUserPage";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +25,18 @@ const router = createBrowserRouter([
       {
         path: "user/:id",
         Component: UserPage,
+        HydrateFallback: Loading,
+        loader: ({ params }) => getUser(params.id),
+      },
+      {
+        path: "user/:id/update",
+        Component: UpdateUserPage,
+        HydrateFallback: Loading,
+        loader: ({ params }) => getUser(params.id),
+      },
+      {
+        path: "user/:id/delete",
+        Component: DeleteUserPage,
         HydrateFallback: Loading,
         loader: ({ params }) => getUser(params.id),
       },

@@ -42,7 +42,7 @@ async function main() {
       const id = req.params.id;
       const query = { _id: new ObjectId(id) };
       const deletedUser = await userCollection.deleteOne(query);
-      res.status(204).json({
+      res.json({
         message: "user deleted successfully",
         user: deletedUser,
       });
