@@ -38,6 +38,23 @@ async function main() {
       });
     });
 
+    app.patch("/users/:id", async (req, res) => {
+      const id = req.params.id;
+      const user = req.body;
+      const query = { _id: new ObjectId(id) };
+      const update = {
+        $set: {
+          username: user.username,
+          email: user.email,
+        },
+      };
+      const updatedUser = await userCollection.updateOne(query, update);
+      res.json({
+        message: "user updated successfully",
+        user: updatedUser,
+      });
+    });
+
     app.delete("/users/:id", async (req, res) => {
       const id = req.params.id;
       const query = { _id: new ObjectId(id) };

@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import { validateEmail } from "../lib/utils";
+
 const UserForm = ({ onAddUser }) => {
   const [form, setForm] = useState({ username: "", email: "" });
   const [errors, setErrors] = useState({});
@@ -9,10 +11,6 @@ const UserForm = ({ onAddUser }) => {
     setForm((prev) => ({ ...prev, [name]: value }));
 
     setErrors((prev) => ({ ...prev, [name]: "" }));
-  };
-
-  const validateEmail = (email) => {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   };
 
   const handleSubmit = (e) => {

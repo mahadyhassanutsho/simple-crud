@@ -1,6 +1,15 @@
 export const postUser = (user) =>
   fetch("http://localhost:6996/users", {
-    method: "post",
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+    },
+    body: JSON.stringify(user),
+  }).then((res) => res.json());
+
+export const patchUser = (id, user) =>
+  fetch(`http://localhost:6996/users/${id}`, {
+    method: "PATCH",
     headers: {
       "content-type": "application/json",
     },

@@ -23,7 +23,7 @@ const DeleteUserPage = () => {
   return (
     <div className="max-w-lg mx-auto bg-white rounded-2xl shadow-lg p-8 text-center space-y-6">
       <h2 className="text-2xl font-semibold text-gray-800">
-        ⚠️ You are about to delete{" "}
+        You are about to delete{" "}
         <span className="text-red-600 font-bold">{user.username}</span>
       </h2>
 
@@ -32,7 +32,7 @@ const DeleteUserPage = () => {
         be undone.
         <br />
         Please type{" "}
-        <span className="text-blue-600 font-mono">{user.username}</span> to
+        <span className="text-blue-600 font-mono">"{user.username}"</span> to
         confirm.
       </p>
 
