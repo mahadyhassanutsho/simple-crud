@@ -1,8 +1,19 @@
 import { Link } from "react-router";
 
 const UserList = ({ users, onDelete }) => {
+  if (!users.length) {
+    return (
+      <div className="max-w-3xl mx-auto mt-16 text-center text-gray-700">
+        <p className="text-lg font-medium">🚫 No users found.</p>
+        <p className="text-sm text-gray-500">
+          Try adding some users to get started!
+        </p>
+      </div>
+    );
+  }
+
   return (
-    <div className="max-w-3xl mx-auto mt-8 grid sm:grid-cols-2 gap-4">
+    <div className="w-full min-w-fit max-w-md mx-auto mt-4 grid sm:grid-cols-2 gap-4">
       {users.map((user) => (
         <Link
           to={`/user/${user._id}`}
@@ -22,7 +33,10 @@ const UserList = ({ users, onDelete }) => {
           </div>
 
           <button
-            onClick={() => onDelete(user._id)}
+            onClick={(e) => {
+              e.preventDefault(); // prevent navigation when deleting
+              onDelete(user._id);
+            }}
             className="text-sm bg-red-500 hover:bg-red-600 text-white px-3 py-1.5 rounded-lg shadow-sm transition cursor-pointer"
           >
             Delete

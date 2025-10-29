@@ -34,7 +34,7 @@ const App = () => {
   }, []);
 
   return (
-    <div className="w-full min-h-screen bg-gray-50 text-gray-800 flex flex-col items-center justify-center gap-8">
+    <>
       {loading ? (
         <Loading />
       ) : (
@@ -42,7 +42,7 @@ const App = () => {
       )}
 
       <UserForm onAddUser={addUserHandler} />
-    </div>
+    </>
   );
 };
 
