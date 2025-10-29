@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 
-import { postUser, deleteUser, getUsers } from "./lib/api";
+import { postUser, deleteUser, getUsers } from "../lib/api";
 
-import UserForm from "./components/UserForm";
-import UserList from "./components/UserList";
-import Loading from "./components/Loading";
+import UserForm from "../components/UserForm";
+import UserList from "../components/UserList";
+import Loading from "../components/Loading";
 
 const App = () => {
   const [users, setUsers] = useState([]);

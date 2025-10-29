@@ -14,3 +14,6 @@ export const deleteUser = (id) =>
 
 export const getUsers = () =>
   fetch("http://localhost:6996/users").then((res) => res.json());
+
+export const getUser = (id) =>
+  fetch(`http://localhost:6996/users/${id}`).then((res) => res.json());

@@ -1,8 +1,11 @@
+import { Link } from "react-router";
+
 const UserList = ({ users, onDelete }) => {
   return (
     <div className="max-w-3xl mx-auto mt-8 grid sm:grid-cols-2 gap-4">
       {users.map((user) => (
-        <div
+        <Link
+          to={`/user/${user._id}`}
           key={user._id}
           className="flex items-center justify-between gap-4 bg-white rounded-2xl shadow-md p-4 hover:scale-[1.02] transition"
         >
@@ -24,7 +27,7 @@ const UserList = ({ users, onDelete }) => {
           >
             Delete
           </button>
-        </div>
+        </Link>
       ))}
     </div>
   );
